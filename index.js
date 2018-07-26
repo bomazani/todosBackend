@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const todos = ['repay Edwin someday', 'punch Morgan'];
+let todos = ['repay Edwin someday', 'punch Morgan'];
 
 
 
@@ -16,7 +16,13 @@ app.get('/', (req, res)=> {
 })
 
 app.delete('/todos', (req, res) => {
- console.log(req.body);
+    console.log(todos);
+    console.log(req.body);
+    todos = todos.filter((todos, index) => {
+        return !req.body.delete.includes(index);
+    })
+    console.log(todos);
+    res.end();
 } )
 
 app.get('/todos',(req, res) => {
