@@ -9,10 +9,15 @@ const todos = ['repay Edwin someday', 'punch Morgan'];
 
 
 app.use(cors());
+app.use(express.json({extended: true}));
 
 app.get('/', (req, res)=> {
     res.redirect('/todos')
 })
+
+app.delete('/todos', (req, res) => {
+ console.log(req.body);
+} )
 
 app.get('/todos',(req, res) => {
     res.json(todos);
