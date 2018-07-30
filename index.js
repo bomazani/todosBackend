@@ -6,22 +6,17 @@ const port = process.env.PORT || 3000;
 let todos = ['repay Edwin someday', 'punch Morgan'];
 
 
-
-
 app.use(cors());
 app.use(express.json({extended: true}));
 
 app.get('/', (req, res)=> {
     res.redirect('/todos')
-})
+});
 
 app.delete('/todos', (req, res) => {
-    console.log(todos);
-    console.log(req.body);
     todos = todos.filter((todos, index) => {
         return !req.body.delete.includes(index);
-    })
-    console.log(todos);
+    });
     res.end();
 } )
 
